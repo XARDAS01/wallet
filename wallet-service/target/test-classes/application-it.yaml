@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: jdbc:tc:postgresql:16.1-alpine:///spring_boot_testcontainers
+    test:
+      database:
+        replace: none
+  liquibase:
+#    change-log: classpath:/db/changelog/db.xml
+#    contexts: it
+    enabled: true
+#    drop-first: true

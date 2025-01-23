@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: wallet-service
+  profiles:
+    include: api
+  jpa:
+    open-in-view: true
+    hibernate:
+      ddl-auto: validate
+  datasource:
+    username: root
+    password: root
+    hikari:
+      validation-timeout: 30000
+  liquibase:
+    change-log: classpath:/db/migrations/db.migrations-master.xml
+    drop-first: false
+    enabled: true
+
+openapi:
+  service:
+    title: Wallet service
+    version: 1
+    url: /

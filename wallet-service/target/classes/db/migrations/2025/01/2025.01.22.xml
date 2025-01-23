@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+  <changeSet id="2025.01.22.001" author="yuri.raduntsev" context="default">
+    <sql>
+      <!-- @formatter:off -->
+      create or replace function calculate_wallet_balance(walletId UUID)
+      returns numeric(19,4) language sql as
+      $$
+        select coalesce(
+          sum(
+            case when operation.operation_type = 'WITHDRAW' then -operation.amount
+            else operation.amount end
+          ), 0
+        )
+        from operations operation
+        where operation.wallet_id = walletId and operation.operation_status = 'APPROVED'
+      $$;
+      <!-- @formatter:on -->
+    </sql>
+  </changeSet>
+
+  <changeSet id="2025.01.22.002" author="yuri.raduntsev">
+    <sql>
+      alter table operations add constraint positive_amount check(amount > 0);
+    </sql>
+  </changeSet>
+</databaseChangeLog>

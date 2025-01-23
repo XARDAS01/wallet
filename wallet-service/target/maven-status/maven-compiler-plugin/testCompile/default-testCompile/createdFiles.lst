@@ -1,0 +1,8 @@
+org/example/annotation/WithPostgreSQLContainer$PostgresqlTestcontainersTestConfiguration.class
+org/example/mapper/WalletMapperTest.class
+org/example/annotation/IT.class
+org/example/annotation/WithPostgreSQLContainer.class
+org/example/mapper/OperationMapperTest.class
+org/example/resource/WalletResourceIT.class
+org/example/resource/WalletResourceIT$1.class
+org/example/container/WalletPostgreSQLContainer.class

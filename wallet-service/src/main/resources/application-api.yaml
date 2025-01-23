@@ -1,0 +1,5 @@
+wallet:
+  create: Create a new wallet
+  getById: Retrieve wallet details by its unique identifier
+  deleteById: Remove a wallet using its unique identifier
+  operation: Perform operations related to wallet transactions
