@@ -1,6 +1,6 @@
 package org.example.api.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import org.springframework.data.domain.Page;
@@ -22,7 +22,7 @@ public class WalletDto {
     @Schema(description = "Current balance of the wallet", example = "1000.00")
     private BigDecimal balance;
 
-    @JsonIgnore
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     @Schema(description = "Page of operations associated with the wallet")
     private Page<OperationDto> operations;
 
